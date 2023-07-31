@@ -35,8 +35,8 @@ class TabBar: UITabBarController {
     func setupVCs() {
         
           viewControllers = [
-            createNavController(for: SocialTableViewViewController(), title: "", image: UIImage(systemName: "plus.circle")!),
-              createNavController(for: StartMenuViewController(), title: "", image: UIImage(systemName: "house")!),
+            createNavController(for: PizzaCalculatorViewController(), title: "Pizza Picker", image: UIImage(systemName: "plus.circle")!),
+              createNavController(for: StartMenuViewController(), title: "Home", image: UIImage(systemName: "house")!),
               createNavController(for: ProfileViewController(), title: NSLocalizedString("Profile", comment: ""), image: UIImage(systemName: "person")!)
           ]
       }
