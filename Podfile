@@ -11,5 +11,9 @@ target 'PizzaCalculator' do
   
   pod 'RealmSwift'
   pod 'SwiftGen'
+  pod 'TinyConstraints'
+  pod 'FloatingPanel'
+  pod 'IQKeyboardManager'
+  pod 'CombineCocoa'
 
 end
