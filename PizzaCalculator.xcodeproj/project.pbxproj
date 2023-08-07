@@ -20,10 +20,15 @@
 		567EA0932A5EEB58005DD8B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0912A5EEB58005DD8B6 /* LaunchScreen.storyboard */; };
 		567EA0A12A5F1C4F005DD8B6 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0A02A5F1C4F005DD8B6 /* swiftgen.yml */; };
 		567EA0A62A5F1FC8005DD8B6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0A52A5F1FC8005DD8B6 /* Colors.xcassets */; };
+		643F9EEF2A80D85000AAD7EB /* CustomFloatingLabelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */; };
+		643F9EF42A810F2900AAD7EB /* PizzaStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */; };
+		643F9EF62A810F8400AAD7EB /* YeastTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */; };
+		643F9EF82A8275D200AAD7EB /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF72A8275D200AAD7EB /* RealmConfig.swift */; };
 		6494A17D2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A17C2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift */; };
 		6494A1802A77E0E0002DC2A9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A17F2A77E0E0002DC2A9 /* CustomTextField.swift */; };
 		6494A1822A77E103002DC2A9 /* CustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A1812A77E103002DC2A9 /* CustomDropDown.swift */; };
 		6494A1842A77E11F002DC2A9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A1832A77E11F002DC2A9 /* CustomButton.swift */; };
+		64970CF72A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64970CF62A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift */; };
 		CB743CA3F3EE11DB590F7043 /* Pods_PizzaCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF6036E069505EA3CBA6912 /* Pods_PizzaCalculator.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,10 +50,15 @@
 		567EA0A02A5F1C4F005DD8B6 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		567EA0A52A5F1FC8005DD8B6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		5F30EECDFE050905F1D5AF0F /* Pods-PizzaCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaCalculator.release.xcconfig"; path = "Target Support Files/Pods-PizzaCalculator/Pods-PizzaCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingLabelInput.swift; sourceTree = "<group>"; };
+		643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaStyleModel.swift; sourceTree = "<group>"; };
+		643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YeastTypeModel.swift; sourceTree = "<group>"; };
+		643F9EF72A8275D200AAD7EB /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		6494A17C2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCalculatorViewController.swift; sourceTree = "<group>"; };
 		6494A17F2A77E0E0002DC2A9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6494A1812A77E103002DC2A9 /* CustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDown.swift; sourceTree = "<group>"; };
 		6494A1832A77E11F002DC2A9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		64970CF62A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCalculatorViewModel.swift; sourceTree = "<group>"; };
 		B043B06D5BB5EF4C9266D9A8 /* Pods-PizzaCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaCalculator.debug.xcconfig"; path = "Target Support Files/Pods-PizzaCalculator/Pods-PizzaCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +107,9 @@
 		567EA0852A5EEB57005DD8B6 /* PizzaCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				643F9EF22A810EF400AAD7EB /* Services */,
+				643F9EF12A810EEC00AAD7EB /* ViewModels */,
+				643F9EF02A810EE400AAD7EB /* Models */,
 				6494A17E2A77E0B7002DC2A9 /* CustomComponents */,
 				566A25D62A64624000DE959E /* ViewController */,
 				566A25D42A5F215500DE959E /* Generated */,
@@ -130,12 +143,38 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		643F9EF02A810EE400AAD7EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */,
+				643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */,
+				643F9EF72A8275D200AAD7EB /* RealmConfig.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		643F9EF12A810EEC00AAD7EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				64970CF62A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		643F9EF22A810EF400AAD7EB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		6494A17E2A77E0B7002DC2A9 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
 				6494A17F2A77E0E0002DC2A9 /* CustomTextField.swift */,
 				6494A1812A77E103002DC2A9 /* CustomDropDown.swift */,
 				6494A1832A77E11F002DC2A9 /* CustomButton.swift */,
+				643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -277,8 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643F9EF42A810F2900AAD7EB /* PizzaStyleModel.swift in Sources */,
+				643F9EEF2A80D85000AAD7EB /* CustomFloatingLabelInput.swift in Sources */,
+				643F9EF82A8275D200AAD7EB /* RealmConfig.swift in Sources */,
 				567EA08B2A5EEB57005DD8B6 /* ViewController.swift in Sources */,
 				567EA0872A5EEB57005DD8B6 /* AppDelegate.swift in Sources */,
+				643F9EF62A810F8400AAD7EB /* YeastTypeModel.swift in Sources */,
 				566A25D82A64625600DE959E /* StartMenuViewController.swift in Sources */,
 				6494A1822A77E103002DC2A9 /* CustomDropDown.swift in Sources */,
 				567EA0892A5EEB57005DD8B6 /* SceneDelegate.swift in Sources */,
@@ -286,6 +329,7 @@
 				6494A17D2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift in Sources */,
 				6494A1842A77E11F002DC2A9 /* CustomButton.swift in Sources */,
 				566A25DA2A6469FB00DE959E /* TabBar.swift in Sources */,
+				64970CF72A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift in Sources */,
 				566A25DC2A64721B00DE959E /* SocialTableViewViewController.swift in Sources */,
 				6494A1802A77E0E0002DC2A9 /* CustomTextField.swift in Sources */,
 			);
