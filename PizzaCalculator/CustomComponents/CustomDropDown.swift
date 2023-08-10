@@ -39,8 +39,8 @@ class CustomDropDown: UITextField, UITextFieldDelegate {
     }
 
     private func setupUI() {
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 3
+        layer.borderColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00).cgColor
         layer.cornerRadius = 5
         tintColor = UIColor.clear
     }

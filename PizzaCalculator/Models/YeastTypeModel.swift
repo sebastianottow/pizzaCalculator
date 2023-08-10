@@ -5,13 +5,22 @@
 //  Created by Sebastian Ottow on 07.08.23.
 //
 
-import RealmSwift
 import UIKit
 
 
-class YeastTypeModel: Object, Codable {
+class YeastTypeModel {
+    
+    enum YeastType: String {
+    case dryYeast = "Dry Yeast"
+    case freshYeast = "Fresh Yeast"
+    case sourDough = "Sourdough"
+    }
 
-    @Persisted var yeastType: String
-    @Persisted var amountOfYeast: Double
-
+    var yeastType: YeastType
+    var amountOfYeast: Double = 0.1
+    
+    init(yeastType: YeastType, amountOfYeast: Double) {
+        self.yeastType = yeastType
+        self.amountOfYeast = amountOfYeast
+    }
 }

@@ -9,12 +9,34 @@ import UIKit
 import RealmSwift
 
 
-class PizzaStyleModel: Object, Codable {
+class PizzaStyleModel {
+    
+    enum TypeOfPizza: String {
+        case napolitan = "Napolitan"
+        case newYork = "New York"
+        case canotto = "Canotto"
+        case tondaRomana = "Tonda Romana"
+        case glutenFree = "Gluten Free"
+    }
 
-    @Persisted var pizzaStyle: String
-    @Persisted var amountOfFlour: Double
-    @Persisted var amountOfWater: Double
-    @Persisted var amountOfSalt: Double
-    @Persisted var amountOfYeast: YeastTypeModel
+    var pizzaStyle: TypeOfPizza
+    var amountOfFlour: Double
+    var amountOfWater: Double
+    var amountOfSalt: Double
+    var amountOfOil: Double?
+    var amountOfSugar: Double?
+    var amountOfPsyllium: Double?
+    
+    init(pizzaStyle: TypeOfPizza, amountOfFlour: Double, amountOfWater: Double, amountOfSalt: Double, amountOfOil: Double?, amountOfSugar: Double?, amountOfPsyllium: Double?) {
+        
+        self.pizzaStyle = pizzaStyle
+        self.amountOfFlour = amountOfFlour
+        self.amountOfWater = amountOfWater
+        self.amountOfSalt = amountOfSalt
+        self.amountOfOil = amountOfOil
+        self.amountOfSugar = amountOfSugar
+        self.amountOfPsyllium = amountOfPsyllium
+        
+    }
 
 }
