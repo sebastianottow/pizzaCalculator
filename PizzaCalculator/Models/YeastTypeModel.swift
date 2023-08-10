@@ -6,6 +6,8 @@
 //
 
 
+import UIKit
+
 enum YeastTypeModel: String, CaseIterable {
     case dryYeast = "Dry Yeast"
     case freshYeast = "Fresh Yeast"

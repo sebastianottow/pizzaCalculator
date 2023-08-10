@@ -13,7 +13,7 @@ import UIKit
 
 
 class PizzaCalculatorViewController: UIViewController {
-    
+
     private let _viewModel = PizzaCalculatorViewModel()
 
     private var _cancellables = Set<AnyCancellable>()
@@ -135,6 +135,7 @@ class PizzaCalculatorViewController: UIViewController {
     }
 
     private func setupUI() {
+        
         view.addSubview(_holderStackView)
         _holderStackView.edgesToSuperview(excluding: .bottom, insets: .init(top: 150, left: 10, bottom: 0, right: 10))
 
@@ -145,7 +146,7 @@ class PizzaCalculatorViewController: UIViewController {
         _pizzaStylePicker.height(55)
         _pizzaStylePicker.placeholder = "Pick a Style"
         _pizzaStylePicker.options = _viewModel.pizzaStyleOptions.map { $0.rawValue }
-
+        
         _typeOfYeastPicker.createPickerView()
         _holderStackView.addArrangedSubview(_typeOfYeastTitle)
         _typeOfYeastTitle.text = "Type of Yeast"
