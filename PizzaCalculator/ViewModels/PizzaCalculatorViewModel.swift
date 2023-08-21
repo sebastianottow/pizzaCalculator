@@ -15,6 +15,8 @@ class PizzaCalculatorViewModel {
     var yeastTypeList = [YeastTypeModel]()
 
     @Published var numberOfPizzas: Float = 4.0
+    @Published var sizeOfPizzas: Float = 230.0
+    @Published var amountOfWater: Float = 65.0
 
     func createInitialPizzaTypeList() {
         

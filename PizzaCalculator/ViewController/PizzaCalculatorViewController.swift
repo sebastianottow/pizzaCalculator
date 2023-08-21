@@ -8,6 +8,7 @@
 import Combine
 import CombineCocoa
 import RealmSwift
+import TinyConstraints
 import UIKit
 
 
@@ -28,41 +29,23 @@ class PizzaCalculatorViewController: UIViewController {
         return stackView
     }()
 
-    private let _horizontalStackView: UIStackView = {
-        let stackView = UIStackView()
-
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        return stackView
-    }()
-
     private var _pizzaStylePickerTitle = UILabel()
     private var _pizzaStylePicker = CustomDropDown()
 
     private var _numberOfPizzasTitle = UILabel()
     private var _numberOfPizzasSliderLabel = UILabel()
-    private var _numberOfPizzasSlider: UISlider = {
-        let slider = UISlider()
-
-        slider.minimumValue = 0
-        slider.maximumValue = 20
-        slider.isContinuous = true
-        slider.tintColor = UIColor(red: 0.91, green: 0.37, blue: 0.31, alpha: 1.00)
-        slider.setValue(4, animated: true)
-
-        return slider
-    }()
+    private var _numberOfPizzasSlider = CustomSlider()
 
     private var _sizeOfPizzasTitle = UILabel()
-    private var _sizeOfPizzasPicker = CustomDropDown()
+    private var _sizeOfPizzasSliderLabel = UILabel()
+    private var _sizeOfPizzasSlider = CustomSlider()
 
     private var _typeOfYeastTitle = UILabel()
     private var _typeOfYeastPicker = CustomDropDown()
 
     private var _amountOfWaterTitle = UILabel()
-    private var _amountOfWaterPicker = CustomDropDown()
+    private var _amountOfWaterSliderLabel = UILabel()
+    private var _amountOfWaterSlider = CustomSlider()
 
     private var _calculatePizzaDoughButton: UIButton = {
         let button = UIButton()
@@ -79,9 +62,9 @@ class PizzaCalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupPublishers()
         setupUI()
         bind(viewModel: _viewModel)
+        setupPublishers()
     }
 
     private func setupPublishers() {
@@ -89,6 +72,16 @@ class PizzaCalculatorViewController: UIViewController {
         _numberOfPizzasSlider.valuePublisher
             .map { $0 }
             .assign(to: \.numberOfPizzas, on: _viewModel)
+            .store(in: &_cancellables)
+
+        _sizeOfPizzasSlider.valuePublisher
+            .map { $0 }
+            .assign(to: \.sizeOfPizzas, on: _viewModel)
+            .store(in: &_cancellables)
+
+        _amountOfWaterSlider.valuePublisher
+            .map { $0 }
+            .assign(to: \.amountOfWater, on: _viewModel)
             .store(in: &_cancellables)
     }
 
@@ -106,6 +99,37 @@ class PizzaCalculatorViewController: UIViewController {
                 let formattedValue = formatter.string(from: number)
 
                 self?._numberOfPizzasSliderLabel.text = formattedValue
+            }
+            .store(in: &_cancellables)
+
+        viewModel.$sizeOfPizzas
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] sizeOfPizzasValue in
+
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .none
+
+                let number = NSNumber(value: sizeOfPizzasValue)
+
+                let formattedValue = formatter.string(from: number)
+
+                self?._sizeOfPizzasSliderLabel.text = "\(formattedValue ?? "230") gr"
+            }
+            .store(in: &_cancellables)
+
+        viewModel.$amountOfWater
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] amountOfWaterValue in
+
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .none
+
+                let number = NSNumber(value: amountOfWaterValue)
+
+                let formattedValue = formatter.string(from: number)
+
+                // MARK: set default value based on pizza style!
+                self?._amountOfWaterSliderLabel.text = "\(formattedValue ?? "65") %"
             }
             .store(in: &_cancellables)
     }
@@ -133,38 +157,93 @@ class PizzaCalculatorViewController: UIViewController {
         _typeOfYeastPicker.placeholder = "Pick a Type"
         _typeOfYeastPicker.selectionList = _viewModel.yeastTypeList.map { $0.yeastType.rawValue }
 
-        _holderStackView.addArrangedSubview(_horizontalStackView)
-        _horizontalStackView.addArrangedSubview(_numberOfPizzasTitle)
-        _numberOfPizzasTitle.text = "Number of Pizzas"
-        _horizontalStackView.addArrangedSubview(_numberOfPizzasSliderLabel)
-        _holderStackView.addArrangedSubview(_numberOfPizzasSlider)
-        _numberOfPizzasSlider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
-
-        _sizeOfPizzasPicker.createPickerView()
-        _holderStackView.addArrangedSubview(_sizeOfPizzasTitle)
-        _sizeOfPizzasTitle.text = "Size of Pizza (gr)"
-        _holderStackView.addArrangedSubview(_sizeOfPizzasPicker)
-        _sizeOfPizzasPicker.height(55)
-        _sizeOfPizzasPicker.placeholder = "230"
-
-        _amountOfWaterPicker.createPickerView()
-        _holderStackView.addArrangedSubview(_amountOfWaterTitle)
-        _amountOfWaterTitle.text = "Amount of water (%)"
-        _holderStackView.addArrangedSubview(_amountOfWaterPicker)
-        _amountOfWaterPicker.height(55)
-        _amountOfWaterPicker.placeholder = "65"
+        setupNumberOfPizzaSlider()
+        setupSizeOfPizzasSlider()
+        setupAmountOfWaterSlider()
 
         _holderStackView.addArrangedSubview(_calculatePizzaDoughButton)
         _calculatePizzaDoughButton.addTarget(self, action: #selector(calculatePizzaDough), for: .touchUpInside)
     }
 
-    @objc func sliderValueDidChange(_ sender: UISlider!) {
-        let step: Float = 1
+    private func setupNumberOfPizzaSlider() {
+        _numberOfPizzasSlider.createSlider()
+        _numberOfPizzasSlider.sliderMinValue = 1
+        _numberOfPizzasSlider.sliderMaxValue = 20
+        _numberOfPizzasSlider.sliderDefaultValue = 4
 
-        let roundedStepValue = round(sender.value / step) * step
-        sender.value = roundedStepValue
+        let horizontalStackView: UIStackView = {
+            let stackView = UIStackView()
 
-        _viewModel.numberOfPizzas = roundedStepValue
+            stackView.axis = .horizontal
+            stackView.spacing = 5
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+
+            return stackView
+        }()
+
+        _holderStackView.addArrangedSubview(_numberOfPizzasTitle)
+        _numberOfPizzasTitle.text = "Number of Pizzas"
+
+        _holderStackView.addArrangedSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(_numberOfPizzasSlider)
+        horizontalStackView.addArrangedSubview(_numberOfPizzasSliderLabel)
+        _numberOfPizzasSliderLabel.width(60)
+        _numberOfPizzasSliderLabel.textAlignment = .center
+    }
+
+    private func setupSizeOfPizzasSlider() {
+        _sizeOfPizzasSlider.createSlider()
+        _sizeOfPizzasSlider.sliderMinValue = 150
+        _sizeOfPizzasSlider.sliderMaxValue = 1_000
+        // MARK: defaultValue should be set by selection of pizza style since it differs per type!
+        _sizeOfPizzasSlider.sliderDefaultValue = 230
+        _sizeOfPizzasSlider.sliderThumbIcon = UIImage(systemName: "person")!
+
+        let horizontalStackView: UIStackView = {
+            let stackView = UIStackView()
+
+            stackView.axis = .horizontal
+            stackView.spacing = 5
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+
+            return stackView
+        }()
+
+        _holderStackView.addArrangedSubview(_sizeOfPizzasTitle)
+        _sizeOfPizzasTitle.text = "Size of Pizza"
+
+        _holderStackView.addArrangedSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(_sizeOfPizzasSlider)
+        horizontalStackView.addArrangedSubview(_sizeOfPizzasSliderLabel)
+        _sizeOfPizzasSliderLabel.width(60)
+        _sizeOfPizzasSliderLabel.textAlignment = .center
+    }
+
+    private func setupAmountOfWaterSlider() {
+        _amountOfWaterSlider.createSlider()
+        _amountOfWaterSlider.sliderMinValue = 0
+        _amountOfWaterSlider.sliderMaxValue = 100
+        // MARK: defaultValue should be set by selection of pizza style since it differs per type!
+        _amountOfWaterSlider.sliderDefaultValue = 65
+
+        let horizontalStackView: UIStackView = {
+            let stackView = UIStackView()
+
+            stackView.axis = .horizontal
+            stackView.spacing = 5
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+
+            return stackView
+        }()
+
+        _holderStackView.addArrangedSubview(_amountOfWaterTitle)
+        _amountOfWaterTitle.text = "Amount of water"
+
+        _holderStackView.addArrangedSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(_amountOfWaterSlider)
+        horizontalStackView.addArrangedSubview(_amountOfWaterSliderLabel)
+        _amountOfWaterSliderLabel.width(60)
+        _amountOfWaterSliderLabel.textAlignment = .center
     }
 
     @objc func calculatePizzaDough() {

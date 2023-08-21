@@ -29,6 +29,7 @@
 		6494A1822A77E103002DC2A9 /* CustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A1812A77E103002DC2A9 /* CustomDropDown.swift */; };
 		6494A1842A77E11F002DC2A9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A1832A77E11F002DC2A9 /* CustomButton.swift */; };
 		64970CF72A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64970CF62A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift */; };
+		64BDD8012A8FB2CE00743EEB /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDD8002A8FB2CE00743EEB /* CustomSlider.swift */; };
 		CB743CA3F3EE11DB590F7043 /* Pods_PizzaCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF6036E069505EA3CBA6912 /* Pods_PizzaCalculator.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		6494A1812A77E103002DC2A9 /* CustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDown.swift; sourceTree = "<group>"; };
 		6494A1832A77E11F002DC2A9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		64970CF62A83BCC600FD90B1 /* PizzaCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCalculatorViewModel.swift; sourceTree = "<group>"; };
+		64BDD8002A8FB2CE00743EEB /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		B043B06D5BB5EF4C9266D9A8 /* Pods-PizzaCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaCalculator.debug.xcconfig"; path = "Target Support Files/Pods-PizzaCalculator/Pods-PizzaCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				6494A1812A77E103002DC2A9 /* CustomDropDown.swift */,
 				6494A1832A77E11F002DC2A9 /* CustomButton.swift */,
 				643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */,
+				64BDD8002A8FB2CE00743EEB /* CustomSlider.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				643F9EF42A810F2900AAD7EB /* PizzaStyleModel.swift in Sources */,
+				64BDD8012A8FB2CE00743EEB /* CustomSlider.swift in Sources */,
 				643F9EEF2A80D85000AAD7EB /* CustomFloatingLabelInput.swift in Sources */,
 				643F9EF82A8275D200AAD7EB /* RealmConfig.swift in Sources */,
 				567EA08B2A5EEB57005DD8B6 /* ViewController.swift in Sources */,

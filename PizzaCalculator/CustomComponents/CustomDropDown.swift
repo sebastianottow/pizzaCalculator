@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class CustomDropDown: UITextField, UITextFieldDelegate {
+
+final class CustomDropDown: UITextField, UITextFieldDelegate {
 
     let pickerView = UIPickerView()
 
@@ -45,15 +46,15 @@ class CustomDropDown: UITextField, UITextFieldDelegate {
         tintColor = UIColor.clear
     }
 
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
