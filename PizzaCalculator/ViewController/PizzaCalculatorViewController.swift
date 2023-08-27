@@ -71,30 +71,30 @@ class PizzaCalculatorViewController: UIViewController {
 
         _numberOfPizzasSlider.valuePublisher
             .map { $0 }
-            .assign(to: \.numberOfPizzas, on: _viewModel)
+            .assign(to: \.selectedNumberOfPizza, on: _viewModel)
             .store(in: &_cancellables)
 
         _sizeOfPizzasSlider.valuePublisher
             .map { $0 }
-            .assign(to: \.sizeOfPizzas, on: _viewModel)
+            .assign(to: \.selectedSizeOfPizza, on: _viewModel)
             .store(in: &_cancellables)
 
         _amountOfWaterSlider.valuePublisher
             .map { $0 }
-            .assign(to: \.amountOfWater, on: _viewModel)
+            .assign(to: \.selectedPercentageOfWater, on: _viewModel)
             .store(in: &_cancellables)
     }
 
     private func bind(viewModel: PizzaCalculatorViewModel) {
 
-        viewModel.$numberOfPizzas
+        viewModel.$selectedNumberOfPizza
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] numberOfPizzasValue in
+            .sink { [weak self] selectedNumberOfPizzaValue in
 
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .none
 
-                let number = NSNumber(value: numberOfPizzasValue)
+                let number = NSNumber(value: selectedNumberOfPizzaValue)
 
                 let formattedValue = formatter.string(from: number)
 
@@ -102,14 +102,14 @@ class PizzaCalculatorViewController: UIViewController {
             }
             .store(in: &_cancellables)
 
-        viewModel.$sizeOfPizzas
+        viewModel.$selectedSizeOfPizza
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] sizeOfPizzasValue in
+            .sink { [weak self] selectedSizeOfPizzaValue in
 
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .none
 
-                let number = NSNumber(value: sizeOfPizzasValue)
+                let number = NSNumber(value: selectedSizeOfPizzaValue)
 
                 let formattedValue = formatter.string(from: number)
 
@@ -117,14 +117,14 @@ class PizzaCalculatorViewController: UIViewController {
             }
             .store(in: &_cancellables)
 
-        viewModel.$amountOfWater
+        viewModel.$selectedPercentageOfWater
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] amountOfWaterValue in
+            .sink { [weak self] selectedAmountOfWaterValue in
 
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .none
 
-                let number = NSNumber(value: amountOfWaterValue)
+                let number = NSNumber(value: selectedAmountOfWaterValue)
 
                 let formattedValue = formatter.string(from: number)
 
@@ -135,9 +135,6 @@ class PizzaCalculatorViewController: UIViewController {
     }
 
     private func setupUI() {
-        _viewModel.createInitialYeastTypeList()
-        _viewModel.createInitialPizzaTypeList()
-        
         view.addSubview(_holderStackView)
         _holderStackView.edgesToSuperview(excluding: .bottom, insets: .init(top: 150, left: 10, bottom: 0, right: 10))
 
@@ -147,15 +144,15 @@ class PizzaCalculatorViewController: UIViewController {
         _holderStackView.addArrangedSubview(_pizzaStylePicker)
         _pizzaStylePicker.height(55)
         _pizzaStylePicker.placeholder = "Pick a Style"
-        _pizzaStylePicker.selectionList = _viewModel.pizzaTypeList.map { $0.pizzaStyle.rawValue }
-        
+        _pizzaStylePicker.options = _viewModel.pizzaStyleOptions.map { $0.rawValue }
+
         _typeOfYeastPicker.createPickerView()
         _holderStackView.addArrangedSubview(_typeOfYeastTitle)
         _typeOfYeastTitle.text = "Type of Yeast"
         _holderStackView.addArrangedSubview(_typeOfYeastPicker)
         _typeOfYeastPicker.height(55)
         _typeOfYeastPicker.placeholder = "Pick a Type"
-        _typeOfYeastPicker.selectionList = _viewModel.yeastTypeList.map { $0.yeastType.rawValue }
+        _typeOfYeastPicker.options = _viewModel.yeastTypeOptions.map { $0.rawValue }
 
         setupNumberOfPizzaSlider()
         setupSizeOfPizzasSlider()
@@ -170,6 +167,7 @@ class PizzaCalculatorViewController: UIViewController {
         _numberOfPizzasSlider.sliderMinValue = 1
         _numberOfPizzasSlider.sliderMaxValue = 20
         _numberOfPizzasSlider.sliderDefaultValue = 4
+        _numberOfPizzasSlider.sliderThumbIcon = UIImage(named: "iconPizzaSlider")!.scale(setWidth: 25)
 
         let horizontalStackView: UIStackView = {
             let stackView = UIStackView()
@@ -247,6 +245,5 @@ class PizzaCalculatorViewController: UIViewController {
     }
 
     @objc func calculatePizzaDough() {
-        print("yeah!")
     }
 }

@@ -20,10 +20,11 @@
 		567EA0932A5EEB58005DD8B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0912A5EEB58005DD8B6 /* LaunchScreen.storyboard */; };
 		567EA0A12A5F1C4F005DD8B6 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0A02A5F1C4F005DD8B6 /* swiftgen.yml */; };
 		567EA0A62A5F1FC8005DD8B6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567EA0A52A5F1FC8005DD8B6 /* Colors.xcassets */; };
+		640817662A988D7200361A15 /* UIImageCustomExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640817652A988D7200361A15 /* UIImageCustomExtension.swift */; };
 		643F9EEF2A80D85000AAD7EB /* CustomFloatingLabelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */; };
-		643F9EF42A810F2900AAD7EB /* PizzaStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */; };
-		643F9EF62A810F8400AAD7EB /* YeastTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */; };
+		643F9EF42A810F2900AAD7EB /* PizzaReceipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF32A810F2900AAD7EB /* PizzaReceipeModel.swift */; };
 		643F9EF82A8275D200AAD7EB /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F9EF72A8275D200AAD7EB /* RealmConfig.swift */; };
+		6467DA2B2AA214E100F9E8C5 /* YeastTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6467DA2A2AA214E100F9E8C5 /* YeastTypeModel.swift */; };
 		6494A17D2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A17C2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift */; };
 		6494A1802A77E0E0002DC2A9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A17F2A77E0E0002DC2A9 /* CustomTextField.swift */; };
 		6494A1822A77E103002DC2A9 /* CustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A1812A77E103002DC2A9 /* CustomDropDown.swift */; };
@@ -51,10 +52,11 @@
 		567EA0A02A5F1C4F005DD8B6 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		567EA0A52A5F1FC8005DD8B6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		5F30EECDFE050905F1D5AF0F /* Pods-PizzaCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaCalculator.release.xcconfig"; path = "Target Support Files/Pods-PizzaCalculator/Pods-PizzaCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		640817652A988D7200361A15 /* UIImageCustomExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageCustomExtension.swift; sourceTree = "<group>"; };
 		643F9EEE2A80D85000AAD7EB /* CustomFloatingLabelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingLabelInput.swift; sourceTree = "<group>"; };
-		643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaStyleModel.swift; sourceTree = "<group>"; };
-		643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YeastTypeModel.swift; sourceTree = "<group>"; };
+		643F9EF32A810F2900AAD7EB /* PizzaReceipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaReceipeModel.swift; sourceTree = "<group>"; };
 		643F9EF72A8275D200AAD7EB /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		6467DA2A2AA214E100F9E8C5 /* YeastTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YeastTypeModel.swift; sourceTree = "<group>"; };
 		6494A17C2A77DFA4002DC2A9 /* PizzaCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCalculatorViewController.swift; sourceTree = "<group>"; };
 		6494A17F2A77E0E0002DC2A9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6494A1812A77E103002DC2A9 /* CustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDown.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		567EA0852A5EEB57005DD8B6 /* PizzaCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				640817642A988D4A00361A15 /* CustomExtensions */,
 				643F9EF22A810EF400AAD7EB /* Services */,
 				643F9EF12A810EEC00AAD7EB /* ViewModels */,
 				643F9EF02A810EE400AAD7EB /* Models */,
@@ -145,12 +148,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		640817642A988D4A00361A15 /* CustomExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				640817652A988D7200361A15 /* UIImageCustomExtension.swift */,
+			);
+			path = CustomExtensions;
+			sourceTree = "<group>";
+		};
 		643F9EF02A810EE400AAD7EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				643F9EF32A810F2900AAD7EB /* PizzaStyleModel.swift */,
-				643F9EF52A810F8400AAD7EB /* YeastTypeModel.swift */,
+				643F9EF32A810F2900AAD7EB /* PizzaReceipeModel.swift */,
 				643F9EF72A8275D200AAD7EB /* RealmConfig.swift */,
+				6467DA2A2AA214E100F9E8C5 /* YeastTypeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,14 +330,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				643F9EF42A810F2900AAD7EB /* PizzaStyleModel.swift in Sources */,
+				643F9EF42A810F2900AAD7EB /* PizzaReceipeModel.swift in Sources */,
 				64BDD8012A8FB2CE00743EEB /* CustomSlider.swift in Sources */,
+				640817662A988D7200361A15 /* UIImageCustomExtension.swift in Sources */,
 				643F9EEF2A80D85000AAD7EB /* CustomFloatingLabelInput.swift in Sources */,
 				643F9EF82A8275D200AAD7EB /* RealmConfig.swift in Sources */,
 				567EA08B2A5EEB57005DD8B6 /* ViewController.swift in Sources */,
 				567EA0872A5EEB57005DD8B6 /* AppDelegate.swift in Sources */,
-				643F9EF62A810F8400AAD7EB /* YeastTypeModel.swift in Sources */,
 				566A25D82A64625600DE959E /* StartMenuViewController.swift in Sources */,
+				6467DA2B2AA214E100F9E8C5 /* YeastTypeModel.swift in Sources */,
 				6494A1822A77E103002DC2A9 /* CustomDropDown.swift in Sources */,
 				567EA0892A5EEB57005DD8B6 /* SceneDelegate.swift in Sources */,
 				566A25DE2A64735100DE959E /* ProfileViewController.swift in Sources */,

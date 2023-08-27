@@ -13,9 +13,9 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
 
     let pickerView = UIPickerView()
 
-    @Published var selectedValue: String?
+    @Published var value: Int?
 
-    var selectionList = [String?]()
+    var options = [String?]()
 
     let padding = UIEdgeInsets(top: 10, left: 40, bottom: 10, right: 10)
 
@@ -37,6 +37,12 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
 
         leftView = iconContainerView
         leftViewMode = .always
+    }
+
+    private func selectText(for index: Int) {
+//        let safeIndex = index - 1
+
+        text = options[index]
     }
 
     private func setupUI() {
@@ -67,18 +73,25 @@ extension CustomDropDown: UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 
-        return selectionList.count
+        return options.count
     }
 }
 
 extension CustomDropDown: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return selectionList[row]
+        return options[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedValue = selectionList[row]
+        var row = row
 
-        text = selectedValue
+        if row == 0 {
+            pickerView.selectRow(row + 1, inComponent: 0, animated: true)
+
+            row += 1
+        }
+
+        value = row
+        selectText(for: row)
     }
 }

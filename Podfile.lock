@@ -1,6 +1,6 @@
 PODS:
   - CombineCocoa (0.4.1)
-  - FloatingPanel (2.6.6)
+  - FloatingPanel (2.7.0)
   - IQKeyboardManager (6.5.12)
   - Realm (10.42.0):
     - Realm/Headers (= 10.42.0)
@@ -30,7 +30,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CombineCocoa: e5210dbfb480ff251078929459ac17e750e7af1d
-  FloatingPanel: 667860b0346a683f136d7048a91999b73b66907a
+  FloatingPanel: c88e3fd981b7a74121ff48746fb14d496f5fd553
   IQKeyboardManager: b1fd66ccf7a79095bdcc4a2735231586f744216e
   Realm: 490aad28f1360e58fc22256d5d686d3a36525346
   RealmSwift: f6a9b56d747bbdd7931de1835896c5f024b6898a
