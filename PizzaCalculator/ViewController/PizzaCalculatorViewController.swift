@@ -62,6 +62,8 @@ class PizzaCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
 
         setupUI()
         bind(viewModel: _viewModel)
@@ -159,12 +161,14 @@ class PizzaCalculatorViewController: UIViewController {
         _pizzaStylePicker.createPickerView()
         _holderStackView.addArrangedSubview(_pizzaStylePickerTitle)
         _pizzaStylePickerTitle.text = "Pizza Style"
+        _pizzaStylePickerTitle.textColor = .black
         _holderStackView.addArrangedSubview(_pizzaStylePicker)
         _pizzaStylePicker.height(55)
         _pizzaStylePicker.options = _viewModel.pizzaStyleOptions.map { $0.rawValue }
         
         _typeOfYeastPicker.createPickerView()
         _holderStackView.addArrangedSubview(_typeOfYeastTitle)
+        _typeOfYeastTitle.textColor = .black
         _typeOfYeastTitle.text = "Type of Yeast"
         _holderStackView.addArrangedSubview(_typeOfYeastPicker)
         _typeOfYeastPicker.height(55)
@@ -197,11 +201,13 @@ class PizzaCalculatorViewController: UIViewController {
         }()
 
         _holderStackView.addArrangedSubview(_numberOfPizzasTitle)
+        _numberOfPizzasTitle.textColor = .black
         _numberOfPizzasTitle.text = "Number of Pizzas"
 
         _holderStackView.addArrangedSubview(horizontalStackView)
         horizontalStackView.addArrangedSubview(_numberOfPizzasSlider)
         horizontalStackView.addArrangedSubview(_numberOfPizzasSliderLabel)
+        _numberOfPizzasSliderLabel.textColor = .black
         _numberOfPizzasSliderLabel.width(60)
         _numberOfPizzasSliderLabel.textAlignment = .center
     }
@@ -225,11 +231,13 @@ class PizzaCalculatorViewController: UIViewController {
         }()
 
         _holderStackView.addArrangedSubview(_sizeOfPizzasTitle)
+        _sizeOfPizzasTitle.textColor = .black
         _sizeOfPizzasTitle.text = "Size of Pizza"
 
         _holderStackView.addArrangedSubview(horizontalStackView)
         horizontalStackView.addArrangedSubview(_sizeOfPizzasSlider)
         horizontalStackView.addArrangedSubview(_sizeOfPizzasSliderLabel)
+        _sizeOfPizzasSliderLabel.textColor = .black
         _sizeOfPizzasSliderLabel.width(60)
         _sizeOfPizzasSliderLabel.textAlignment = .center
     }
@@ -252,11 +260,13 @@ class PizzaCalculatorViewController: UIViewController {
         }()
 
         _holderStackView.addArrangedSubview(_amountOfWaterTitle)
+        _amountOfWaterTitle.textColor = .black
         _amountOfWaterTitle.text = "Amount of water"
 
         _holderStackView.addArrangedSubview(horizontalStackView)
         horizontalStackView.addArrangedSubview(_amountOfWaterSlider)
         horizontalStackView.addArrangedSubview(_amountOfWaterSliderLabel)
+        _amountOfWaterSliderLabel.textColor = .black
         _amountOfWaterSliderLabel.width(60)
         _amountOfWaterSliderLabel.textAlignment = .center
     }
