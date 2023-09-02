@@ -15,7 +15,12 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
 
     @Published var value: Int?
 
-    var options = [String?]()
+    var options: [String?] = [] {
+        didSet {
+            options.insert("Bitte wählen", at: 0)
+            placeholder = options.first ?? ""
+        }
+    }
 
     let padding = UIEdgeInsets(top: 10, left: 40, bottom: 10, right: 10)
 
@@ -40,8 +45,6 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
     }
 
     private func selectText(for index: Int) {
-//        let safeIndex = index - 1
-
         text = options[index]
     }
 
@@ -63,7 +66,6 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
     override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
-
 }
 
 extension CustomDropDown: UIPickerViewDataSource {
@@ -72,8 +74,7 @@ extension CustomDropDown: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-
-        return options.count
+        options.count
     }
 }
 

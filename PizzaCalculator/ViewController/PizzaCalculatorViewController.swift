@@ -144,7 +144,6 @@ class PizzaCalculatorViewController: UIViewController {
         _pizzaStylePickerTitle.text = "Pizza Style"
         _holderStackView.addArrangedSubview(_pizzaStylePicker)
         _pizzaStylePicker.height(55)
-        _pizzaStylePicker.placeholder = "Pick a Style"
         _pizzaStylePicker.options = _viewModel.pizzaStyleOptions.map { $0.rawValue }
         
         _typeOfYeastPicker.createPickerView()
@@ -152,7 +151,6 @@ class PizzaCalculatorViewController: UIViewController {
         _typeOfYeastTitle.text = "Type of Yeast"
         _holderStackView.addArrangedSubview(_typeOfYeastPicker)
         _typeOfYeastPicker.height(55)
-        _typeOfYeastPicker.placeholder = "Pick a Type"
         _typeOfYeastPicker.options = _viewModel.yeastTypeOptions.map { $0.rawValue }
 
         setupNumberOfPizzaSlider()
