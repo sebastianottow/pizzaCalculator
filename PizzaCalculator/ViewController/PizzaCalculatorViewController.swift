@@ -265,18 +265,9 @@ class PizzaCalculatorViewController: UIViewController {
         _viewModel.calculatePizzaIngredients(
             selectedPizzaOption: _viewModel.selectedPizzaStyleOption,
             selectedYeastOption: _viewModel.selectedYeastTypeOption,
-            selectedNumberOfPizza: Int(_viewModel.selectedNumberOfPizza),
-            selectedSizeOfPizza: Int(_viewModel.selectedSizeOfPizza),
-            selectedPercentageOfWater: Int(_viewModel.selectedPercentageOfWater)
-        )
-
-        print("""
-            \(_viewModel.selectedPizzaStyleOption),
-            \(_viewModel.selectedYeastTypeOption),
-            \(_viewModel.selectedNumberOfPizza),
-            \(_viewModel.selectedSizeOfPizza),
-            \(_viewModel.selectedPercentageOfWater)
-            """
+            selectedNumberOfPizza: Double(_viewModel.selectedNumberOfPizza),
+            selectedSizeOfPizza: Double(_viewModel.selectedSizeOfPizza),
+            selectedPercentageOfWater: Double(_viewModel.selectedPercentageOfWater)
         )
     }
 }

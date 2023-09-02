@@ -84,7 +84,6 @@ extension CustomDropDown: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(options)
         var row = row
 
         if row == 0 {
