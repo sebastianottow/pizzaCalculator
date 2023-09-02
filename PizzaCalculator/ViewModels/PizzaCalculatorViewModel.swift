@@ -21,10 +21,11 @@ class PizzaCalculatorViewModel {
     @Published var selectedPercentageOfWater: Float = 65.0
 
     func calculatePizzaIngredients(
-        pizzaStyle: PizzaReceipeModel.TypeOfPizza,
-        numberOfPizza: Int,
-        sizeOfPizza: Int,
-        amountOfWater: Int
+        selectedPizzaOption: PizzaReceipeModel.TypeOfPizza,
+        selectedYeastOption: YeastTypeModel,
+        selectedNumberOfPizza: Int,
+        selectedSizeOfPizza: Int,
+        selectedPercentageOfWater: Int
 
     ) {
         print("calculate pizza ingredients")

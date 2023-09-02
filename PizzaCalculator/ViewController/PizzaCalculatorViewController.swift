@@ -23,6 +23,7 @@ class PizzaCalculatorViewController: UIViewController {
 
         stackView.axis = .vertical
         stackView.distribution = .fill
+        stackView.spacing = 20
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -86,6 +87,22 @@ class PizzaCalculatorViewController: UIViewController {
     }
 
     private func bind(viewModel: PizzaCalculatorViewModel) {
+
+        _pizzaStylePicker.$value
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] selectedPizzaOption in
+                guard let selectedPizzaOption = selectedPizzaOption, let self = self else { return }
+                self._viewModel.selectedPizzaStyleOption = self._viewModel.pizzaStyleOptions[selectedPizzaOption - 1]
+            }
+            .store(in: &_cancellables)
+
+        _typeOfYeastPicker.$value
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] selectedYeastOption in
+                guard let selectedYeastOption = selectedYeastOption, let self = self else { return }
+                self._viewModel.selectedYeastTypeOption = self._viewModel.yeastTypeOptions[selectedYeastOption - 1]
+            }
+            .store(in: &_cancellables)
 
         viewModel.$selectedNumberOfPizza
             .receive(on: DispatchQueue.main)
@@ -158,6 +175,7 @@ class PizzaCalculatorViewController: UIViewController {
         setupAmountOfWaterSlider()
 
         _holderStackView.addArrangedSubview(_calculatePizzaDoughButton)
+        _calculatePizzaDoughButton.topToBottom(of: _amountOfWaterSlider, offset: 60)
         _calculatePizzaDoughButton.addTarget(self, action: #selector(calculatePizzaDough), for: .touchUpInside)
     }
 
@@ -244,5 +262,21 @@ class PizzaCalculatorViewController: UIViewController {
     }
 
     @objc func calculatePizzaDough() {
+        _viewModel.calculatePizzaIngredients(
+            selectedPizzaOption: _viewModel.selectedPizzaStyleOption,
+            selectedYeastOption: _viewModel.selectedYeastTypeOption,
+            selectedNumberOfPizza: Int(_viewModel.selectedNumberOfPizza),
+            selectedSizeOfPizza: Int(_viewModel.selectedSizeOfPizza),
+            selectedPercentageOfWater: Int(_viewModel.selectedPercentageOfWater)
+        )
+
+        print("""
+            \(_viewModel.selectedPizzaStyleOption),
+            \(_viewModel.selectedYeastTypeOption),
+            \(_viewModel.selectedNumberOfPizza),
+            \(_viewModel.selectedSizeOfPizza),
+            \(_viewModel.selectedPercentageOfWater)
+            """
+        )
     }
 }
