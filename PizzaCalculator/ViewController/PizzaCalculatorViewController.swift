@@ -17,6 +17,12 @@ class PizzaCalculatorViewController: UIViewController {
     private let _viewModel = PizzaCalculatorViewModel()
 
     private var _cancellables = Set<AnyCancellable>()
+    
+    private var _didChangeSelectedOption: Bool? = false {
+        didSet {
+            resetToDefaultValue()
+        }
+    }
 
     private var _holderStackView: UIStackView = {
         let stackView = UIStackView()
@@ -95,6 +101,8 @@ class PizzaCalculatorViewController: UIViewController {
             .sink { [weak self] selectedPizzaOption in
                 guard let selectedPizzaOption = selectedPizzaOption, let self = self else { return }
                 self._viewModel.selectedPizzaStyleOption = self._viewModel.pizzaStyleOptions[selectedPizzaOption - 1]
+                
+                self._didChangeSelectedOption = true
             }
             .store(in: &_cancellables)
 
@@ -182,6 +190,11 @@ class PizzaCalculatorViewController: UIViewController {
         _calculatePizzaDoughButton.topToBottom(of: _amountOfWaterSlider, offset: 60)
         _calculatePizzaDoughButton.addTarget(self, action: #selector(calculatePizzaDough), for: .touchUpInside)
     }
+    
+    private func resetToDefaultValue() {
+        _viewModel.selectedSizeOfPizza = Float(_viewModel.selectedPizzaStyleOption.defaultPizzaSize)
+        _viewModel.selectedPercentageOfWater = Float(_viewModel.selectedPizzaStyleOption.defaultPercentageOfWater)
+    }
 
     private func setupNumberOfPizzaSlider() {
         _numberOfPizzasSlider.createSlider()
@@ -216,7 +229,6 @@ class PizzaCalculatorViewController: UIViewController {
         _sizeOfPizzasSlider.createSlider()
         _sizeOfPizzasSlider.sliderMinValue = 150
         _sizeOfPizzasSlider.sliderMaxValue = 1_000
-        // MARK: defaultValue should be set by selection of pizza style since it differs per type!
         _sizeOfPizzasSlider.sliderDefaultValue = 230
         _sizeOfPizzasSlider.sliderThumbIcon = UIImage(systemName: "person")!
 
@@ -246,7 +258,6 @@ class PizzaCalculatorViewController: UIViewController {
         _amountOfWaterSlider.createSlider()
         _amountOfWaterSlider.sliderMinValue = 0
         _amountOfWaterSlider.sliderMaxValue = 100
-        // MARK: defaultValue should be set by selection of pizza style since it differs per type!
         _amountOfWaterSlider.sliderDefaultValue = 65
 
         let horizontalStackView: UIStackView = {

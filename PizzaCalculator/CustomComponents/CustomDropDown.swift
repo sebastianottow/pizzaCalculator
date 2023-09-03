@@ -17,7 +17,6 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
     }
 
     let pickerView = UIPickerView()
-    
 
     @Published var value: Int?
 

@@ -101,13 +101,23 @@ class PizzaReceipeModel {
             }
         }
 
-        var sizeOfPizza: Double {
+        var defaultPizzaSize: Double {
             switch self {
             case .napolitan: return 230.0
             case .newYork: return 240.0
             case .canotto: return 250.0
             case .tondaRomana: return 175.0
             case .glutenFree: return 300.0
+            }
+        }
+        
+        var defaultPercentageOfWater: Double {
+            switch self {
+            case .napolitan: return 65.0
+            case .newYork: return 62.0
+            case .canotto: return 70.0
+            case .tondaRomana: return 60.0
+            case .glutenFree: return 75.0
             }
         }
     }
