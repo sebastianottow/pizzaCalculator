@@ -168,6 +168,7 @@ class PizzaCalculatorViewController: UIViewController {
 
         _pizzaStylePicker.createPickerView()
         _holderStackView.addArrangedSubview(_pizzaStylePickerTitle)
+        _pizzaStylePicker.setIcon(icon: Asset.iconDropDown.image, color: nil)
         _pizzaStylePickerTitle.text = "Pizza Style"
         _pizzaStylePickerTitle.textColor = .black
         _holderStackView.addArrangedSubview(_pizzaStylePicker)
@@ -176,6 +177,8 @@ class PizzaCalculatorViewController: UIViewController {
         
         _typeOfYeastPicker.createPickerView()
         _holderStackView.addArrangedSubview(_typeOfYeastTitle)
+        _typeOfYeastPicker.setIcon(icon: Asset.iconDropDown.image, color: nil)
+        _pizzaStylePickerTitle.text = "Pizza Style"
         _typeOfYeastTitle.textColor = .black
         _typeOfYeastTitle.text = "Type of Yeast"
         _holderStackView.addArrangedSubview(_typeOfYeastPicker)
@@ -201,7 +204,7 @@ class PizzaCalculatorViewController: UIViewController {
         _numberOfPizzasSlider.sliderMinValue = 1
         _numberOfPizzasSlider.sliderMaxValue = 20
         _numberOfPizzasSlider.sliderDefaultValue = 4
-        _numberOfPizzasSlider.sliderThumbIcon = UIImage(named: "iconPizzaSlider")!.scale(setWidth: 25)
+        _numberOfPizzasSlider.sliderThumbIcon = Asset.iconMultiplePeople.image.scale(setWidth: 25)
 
         let horizontalStackView: UIStackView = {
             let stackView = UIStackView()
@@ -230,7 +233,7 @@ class PizzaCalculatorViewController: UIViewController {
         _sizeOfPizzasSlider.sliderMinValue = 150
         _sizeOfPizzasSlider.sliderMaxValue = 1_000
         _sizeOfPizzasSlider.sliderDefaultValue = 230
-        _sizeOfPizzasSlider.sliderThumbIcon = UIImage(systemName: "person")!
+        _sizeOfPizzasSlider.sliderThumbIcon = Asset.iconSizeSlider.image.scale(setWidth: 25)
 
         let horizontalStackView: UIStackView = {
             let stackView = UIStackView()
@@ -259,6 +262,7 @@ class PizzaCalculatorViewController: UIViewController {
         _amountOfWaterSlider.sliderMinValue = 0
         _amountOfWaterSlider.sliderMaxValue = 100
         _amountOfWaterSlider.sliderDefaultValue = 65
+        _amountOfWaterSlider.sliderThumbIcon = Asset.iconWaterSlider.image.scale(setWidth: 25)
 
         let horizontalStackView: UIStackView = {
             let stackView = UIStackView()
@@ -290,5 +294,7 @@ class PizzaCalculatorViewController: UIViewController {
             selectedSizeOfPizza: Double(_viewModel.selectedSizeOfPizza),
             selectedPercentageOfWater: Double(_viewModel.selectedPercentageOfWater)
         )
+
+        self.navigationController?.pushViewController(ReceipeViewController(viewModel: _viewModel), animated: true)
     }
 }

@@ -31,19 +31,24 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
     func createPickerView() {
         pickerView.delegate = self
         inputView = pickerView
-        
+
         setDefaultAttributedPlaceholder(defaultAttributedPlaceholder: Constants.defaultAttributedPlaceholder)
 
         setupUI()
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentViewDidTap))
+        addGestureRecognizer(tapGestureRecognizer)
     }
 
     func setIcon(icon: UIImage?, color: UIColor?) {
         let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
         iconView.image = icon
         iconView.tintColor = color
+        iconView.isUserInteractionEnabled = true
 
         let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
         iconContainerView.addSubview(iconView)
+        iconContainerView.isUserInteractionEnabled = true
 
         leftView = iconContainerView
         leftViewMode = .always
@@ -75,6 +80,10 @@ final class CustomDropDown: UITextField, UITextFieldDelegate {
 
     override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
+    }
+
+    @objc private func contentViewDidTap() {
+        becomeFirstResponder()
     }
 }
 

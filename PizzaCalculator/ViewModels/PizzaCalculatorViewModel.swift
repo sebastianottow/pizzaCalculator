@@ -14,12 +14,14 @@ class PizzaCalculatorViewModel {
     var pizzaStyleOptions = PizzaReceipeModel.TypeOfPizza.allCases
     var yeastTypeOptions = YeastTypeModel.allCases
 
+    private var _cancellables = Set<AnyCancellable>()
+
     @Published var selectedPizzaStyleOption: PizzaReceipeModel.TypeOfPizza = .napolitan
     @Published var selectedYeastTypeOption: YeastTypeModel = .dryYeast
     @Published var selectedNumberOfPizza: Float = 4.0
     @Published var selectedSizeOfPizza: Float = 230.0
     @Published var selectedPercentageOfWater: Float = 65.0
-    
+
     //MARK: list of ingredients and amounts calculated
     @Published var calculatedAmountOfFlour: Double = 0.0
     @Published var calculatedAmountOfWater: Double = 0.0
@@ -38,7 +40,7 @@ class PizzaCalculatorViewModel {
 
     ) {
         let yeastFactor: Double = {
-           
+
             switch selectedYeastOption {
             case .dryYeast: return selectedPizzaOption.amountOfDryYeast
             case .freshYeast: return selectedPizzaOption.amountOfFreshYeast
@@ -46,7 +48,7 @@ class PizzaCalculatorViewModel {
             }
             
         }()
-        
+
         calculatedAmountOfFlour = selectedNumberOfPizza * selectedPizzaOption.amountOfFlour
         calculatedAmountOfWater = calculatedAmountOfFlour * (selectedPercentageOfWater / 100)
         calculatedAmountOfSalt = selectedNumberOfPizza * selectedPizzaOption.amountOfSalt
