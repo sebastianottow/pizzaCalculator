@@ -12,24 +12,13 @@ import UIKit
 class ReceipeViewController: UIViewController {
     
     private var _pizzaCalculatorViewModel = PizzaCalculatorViewModel()
-
-    private let _receipeViewModel = ReceipeViewModel()
     
     private var _cancellables = Set<AnyCancellable>()
 
     private let _handMadeLabel = UILabel()
     private let _thermomixLabel = UILabel()
-
-    private let _switchHolderStackView: UIStackView = {
-        let stack = UIStackView()
-
-        stack.axis = .horizontal
-        stack.distribution = .equalCentering
-        stack.alignment = .center
-        stack.spacing = 10
-
-        return stack
-    }()
+    
+    private let _receipeView = ReceipeView()
 
     private let _holderStackView: UIStackView = {
         let stack = UIStackView()
@@ -58,33 +47,21 @@ class ReceipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _doughMixingSwitch.addTarget(self, action: #selector(switchStateDidChanage), for: .valueChanged)
-        _doughMixingSwitch.setOn(true, animated: true)
-
         view.addSubview(_holderStackView)
-        _holderStackView.addArrangedSubview(_switchHolderStackView)
         _holderStackView.edgesToSuperview(excluding: .bottom, insets: .init(top: 0, left: 10, bottom: 0, right: 10))
-
-        _switchHolderStackView.addArrangedSubview(_thermomixLabel)
-        _switchHolderStackView.addArrangedSubview(_doughMixingSwitch)
-        _switchHolderStackView.addArrangedSubview(_handMadeLabel)
-
-        _handMadeLabel.text = "Hand made"
-        _thermomixLabel.text = "Thermomix"
-
-        _switchHolderStackView.edgesToSuperview(excluding: [.left, .bottom, .right], insets: .init(top: 100, left: 0, bottom: 0, right: 0))
-        _switchHolderStackView.centerXToSuperview()
+        
+        _holderStackView.addArrangedSubview(_receipeView)
+        _receipeView.edgesToSuperview(excluding: [.left, .bottom, .right], insets: .init(top: 100, left: 0, bottom: 0, right: 0))
+        
+        _receipeView.selectedPizzaStyleTitle.text = "For your \(_pizzaCalculatorViewModel.selectedPizzaStyleOption) style pizza you need to mix the following amount of ingredients:"
+        
+        _receipeView.amountOfFlourRequired.text = "\(_pizzaCalculatorViewModel.calculatedAmountOfFlour) g of flour"
+        
+        _receipeView.amountOfWaterRequired.text = "\(_pizzaCalculatorViewModel.calculatedAmountOfWater) g of water"
+        
+        _receipeView.amountOfSaltRequired.text = "\(_pizzaCalculatorViewModel.calculatedAmountOfSalt) g salt"
+        
+        _receipeView.amountOfYeastRequired.text = "\(_pizzaCalculatorViewModel.calculatedAmountOfYeast) g of \(_pizzaCalculatorViewModel.selectedYeastTypeOption)"
 
     }
-
-    @objc func switchStateDidChanage(_ sender: UISwitch) {
-
-        if (sender.isOn == true) {
-            _receipeViewModel.handMade = true
-        } else {
-            _receipeViewModel.thermomix = true
-        }
-    }
-
-    // MARK: add switch to choose between handmade and thermomix
 }

@@ -2,11 +2,11 @@ PODS:
   - CombineCocoa (0.4.1)
   - FloatingPanel (2.7.0)
   - IQKeyboardManager (6.5.12)
-  - Realm (10.42.2):
-    - Realm/Headers (= 10.42.2)
-  - Realm/Headers (10.42.2)
-  - RealmSwift (10.42.2):
-    - Realm (= 10.42.2)
+  - Realm (10.42.3):
+    - Realm/Headers (= 10.42.3)
+  - Realm/Headers (10.42.3)
+  - RealmSwift (10.42.3):
+    - Realm (= 10.42.3)
   - SwiftGen (6.6.2)
   - TinyConstraints (4.0.2)
 
@@ -32,8 +32,8 @@ SPEC CHECKSUMS:
   CombineCocoa: e5210dbfb480ff251078929459ac17e750e7af1d
   FloatingPanel: c88e3fd981b7a74121ff48746fb14d496f5fd553
   IQKeyboardManager: b1fd66ccf7a79095bdcc4a2735231586f744216e
-  Realm: 2d2980fd7a562fa3d7ee21bb7d6cebac64393886
-  RealmSwift: af08136c0322abccda4f34f482221c92d20dc88e
+  Realm: ac7fa0100533e1c91511b19a58e837f9cfd80bb7
+  RealmSwift: a06d4e3c623a5f236bd9fe214f0bfdfee20312c2
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
 
